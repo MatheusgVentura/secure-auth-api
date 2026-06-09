@@ -11,6 +11,12 @@ Antes de iniciar, tenha instalado:
 - pip
 - Um editor de codigo, como VS Code
 
+Versao local usada durante a preparacao do projeto:
+
+```txt
+Python 3.14.3
+```
+
 ## Clonar o repositorio
 
 ```bash
@@ -44,17 +50,30 @@ Depois tente ativar o ambiente novamente.
 
 ## Instalar dependencias
 
-Quando o arquivo `requirements.txt` existir, instale as dependencias com:
+Com o ambiente virtual ativado, atualize o pip:
+
+```powershell
+python -m pip install --upgrade pip
+```
+
+Depois instale as dependencias do projeto:
 
 ```powershell
 pip install -r requirements.txt
 ```
 
-Enquanto o projeto ainda estiver no inicio, as dependencias previstas sao:
+Dependencias iniciais:
 
-```powershell
-pip install django djangorestframework djangorestframework-simplejwt python-decouple
+```txt
+Django
+Django REST Framework
+Django REST Framework Simple JWT
+python-decouple
+dj-database-url
+django-cors-headers
 ```
+
+O projeto usa Django `5.2.x` LTS como base inicial.
 
 ## Criar arquivo de variaveis de ambiente
 
@@ -141,6 +160,8 @@ Salvar dependencias instaladas:
 ```powershell
 pip freeze > requirements.txt
 ```
+
+Use esse comando apenas quando a intencao for congelar as versoes exatas instaladas no ambiente local. Para o inicio do projeto, o `requirements.txt` usa intervalos de versao para receber atualizacoes compativeis.
 
 Rodar testes:
 
