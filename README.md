@@ -1,10 +1,10 @@
 # Django Secure Auth API
 
-API REST de autenticação segura em desenvolvimento, criada com o objetivo de praticar conceitos de **backend**, **autenticação de usuários** e **boas práticas de segurança** utilizando **Python** e **Django REST Framework**.
+API REST de autenticacao segura em desenvolvimento, criada com o objetivo de praticar conceitos de **backend**, **autenticacao de usuarios** e **boas praticas de seguranca** utilizando **Python** e **Django REST Framework**.
 
 ## Objetivo
 
-Este projeto tem como finalidade aprofundar conhecimentos em desenvolvimento backend com Python, criação de APIs REST, autenticação, controle de acesso e fundamentos de segurança aplicados ao desenvolvimento web.
+Este projeto tem como finalidade aprofundar conhecimentos em desenvolvimento backend com Python, criacao de APIs REST, autenticacao, controle de acesso e fundamentos de seguranca aplicados ao desenvolvimento web.
 
 ## Tecnologias previstas
 
@@ -13,6 +13,12 @@ Este projeto tem como finalidade aprofundar conhecimentos em desenvolvimento bac
 * Django REST Framework
 * JWT
 * Banco de dados SQL
+
+## Documentacao
+
+* [Roadmap do projeto](docs/ROADMAP.md)
+* [Design inicial da API](docs/API_DESIGN.md)
+* [Requisitos de seguranca](docs/SECURITY_REQUIREMENTS.md)
 
 ## Status
 
