@@ -11,7 +11,8 @@ Este documento organiza a evolucao do projeto em fases pequenas, para facilitar 
 - [ ] Criar app principal de usuarios/autenticacao
 - [ ] Configurar variaveis de ambiente
 - [ ] Configurar banco de dados inicial
-- [ ] Criar arquivo `.env.example`
+- [x] Criar arquivo `.env.example`
+- [x] Criar arquivo `.gitignore`
 
 ## Fase 2 - Base da API
 

@@ -17,6 +17,8 @@ Este projeto tem como finalidade aprofundar conhecimentos em desenvolvimento bac
 ## Documentacao
 
 * [Roadmap do projeto](docs/ROADMAP.md)
+* [Guia de setup local](docs/SETUP_GUIDE.md)
+* [Modelo de dados](docs/DATABASE_MODEL.md)
 * [Design inicial da API](docs/API_DESIGN.md)
 * [Requisitos de seguranca](docs/SECURITY_REQUIREMENTS.md)
 

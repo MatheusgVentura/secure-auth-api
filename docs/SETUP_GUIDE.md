@@ -67,12 +67,20 @@ SECRET_KEY=change-me
 DEBUG=True
 ALLOWED_HOSTS=localhost,127.0.0.1
 DATABASE_URL=sqlite:///db.sqlite3
+ACCESS_TOKEN_LIFETIME_MINUTES=15
+REFRESH_TOKEN_LIFETIME_DAYS=7
 ```
 
 Importante:
 
 - O arquivo `.env` nao deve ser enviado para o Git.
 - O projeto deve ter um `.env.example` com valores ficticios.
+
+Para criar o arquivo local, copie o exemplo:
+
+```powershell
+Copy-Item .env.example .env
+```
 
 ## Criar projeto Django
 
