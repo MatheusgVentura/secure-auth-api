@@ -124,9 +124,7 @@ def test_logout_blacklists_refresh_token(api_client, user):
         {"email": user.email, "password": "SenhaForte123!"},
         format="json",
     )
-    api_client.credentials(
-        HTTP_AUTHORIZATION=f"Bearer {login_response.data['access']}"
-    )
+    api_client.credentials(HTTP_AUTHORIZATION=f"Bearer {login_response.data['access']}")
 
     response = api_client.post(
         reverse("logout"),
@@ -145,9 +143,7 @@ def test_logout_requires_refresh_token(api_client, user):
         {"email": user.email, "password": "SenhaForte123!"},
         format="json",
     )
-    api_client.credentials(
-        HTTP_AUTHORIZATION=f"Bearer {login_response.data['access']}"
-    )
+    api_client.credentials(HTTP_AUTHORIZATION=f"Bearer {login_response.data['access']}")
 
     response = api_client.post(reverse("logout"), {}, format="json")
 

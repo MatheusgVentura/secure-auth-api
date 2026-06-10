@@ -1,0 +1,28 @@
+[tool.ruff]
+line-length = 88
+target-version = "py312"
+exclude = [
+    ".git",
+    ".venv",
+    "__pycache__",
+    "htmlcov",
+    "migrations",
+]
+
+[tool.ruff.lint]
+select = [
+    "E",
+    "F",
+    "I",
+    "UP",
+]
+
+[tool.ruff.lint.per-file-ignores]
+"config/settings/development.py" = ["F403"]
+"config/settings/production.py" = ["F403"]
+"config/settings/test.py" = ["F403"]
+
+[tool.ruff.format]
+quote-style = "double"
+indent-style = "space"
+line-ending = "auto"

@@ -170,7 +170,7 @@ Criterio de pronto:
 Objetivo: evoluir o projeto apenas depois que a primeira versao pequena estiver pronta.
 
 - [x] Adicionar Swagger/OpenAPI.
-- [ ] Configurar lint/formatacao.
+- [x] Configurar lint/formatacao.
 - [ ] Configurar cobertura de testes.
 - [ ] Configurar Docker.
 - [ ] Criar `docker-compose.yml`.

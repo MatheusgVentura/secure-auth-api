@@ -22,6 +22,7 @@ staticfiles/
 .coverage
 htmlcov/
 .pytest_cache/
+.ruff_cache/
 
 # IDEs and editors
 .vscode/

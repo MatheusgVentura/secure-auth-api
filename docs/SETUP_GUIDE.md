@@ -158,6 +158,28 @@ python -m pytest
 
 Os testes fazem parte do MVP. A suite inicial valida modelo de usuario, health check, cadastro, login, `/users/me/` e troca de senha.
 
+## Verificar qualidade de codigo
+
+O projeto usa `ruff` para lint e formatacao.
+
+Verifique lint:
+
+```powershell
+python -m ruff check .
+```
+
+Verifique formatacao:
+
+```powershell
+python -m ruff format . --check
+```
+
+Formate o codigo:
+
+```powershell
+python -m ruff format .
+```
+
 ## Manutencao de dependencias
 
 O `requirements.txt` usa intervalos de versao para permitir atualizacoes compativeis no inicio do projeto.

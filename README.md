@@ -83,6 +83,32 @@ O projeto disponibiliza documentacao interativa e schema OpenAPI para facilitar 
 | ReDoc | `http://127.0.0.1:8000/api/redoc/` |
 | Schema OpenAPI | `http://127.0.0.1:8000/api/schema/` |
 
+## Qualidade de codigo
+
+O projeto usa `ruff` para lint e formatacao.
+
+Verificar problemas:
+
+```powershell
+python -m ruff check .
+```
+
+Aplicar correcoes automaticas quando possivel:
+
+```powershell
+python -m ruff check . --fix
+python -m ruff format .
+```
+
+Rodar a verificacao completa local:
+
+```powershell
+python manage.py check
+python -m ruff check .
+python -m ruff format . --check
+python -m pytest
+```
+
 ## Exemplos de uso da API
 
 Os exemplos abaixo usam PowerShell com `Invoke-RestMethod`.

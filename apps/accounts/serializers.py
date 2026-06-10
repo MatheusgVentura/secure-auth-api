@@ -1,8 +1,7 @@
 from django.contrib.auth import authenticate, get_user_model
 from django.contrib.auth.password_validation import validate_password
-from rest_framework.exceptions import AuthenticationFailed
 from rest_framework import serializers
-
+from rest_framework.exceptions import AuthenticationFailed
 
 User = get_user_model()
 
@@ -69,7 +68,9 @@ class LoginSerializer(serializers.Serializer):
 
 class ChangePasswordSerializer(serializers.Serializer):
     current_password = serializers.CharField(write_only=True)
-    new_password = serializers.CharField(write_only=True, validators=[validate_password])
+    new_password = serializers.CharField(
+        write_only=True, validators=[validate_password]
+    )
     new_password_confirm = serializers.CharField(write_only=True)
 
     def validate_current_password(self, value):

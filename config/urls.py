@@ -14,9 +14,14 @@ Including another URLconf
     1. Import the include() function: from django.urls import include, path
     2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
 """
+
 from django.contrib import admin
 from django.urls import include, path
-from drf_spectacular.views import SpectacularAPIView, SpectacularRedocView, SpectacularSwaggerView
+from drf_spectacular.views import (
+    SpectacularAPIView,
+    SpectacularRedocView,
+    SpectacularSwaggerView,
+)
 from rest_framework.decorators import api_view, permission_classes
 from rest_framework.permissions import AllowAny
 from rest_framework.response import Response
@@ -54,6 +59,7 @@ def api_root(request):
 def health_check(request):
     return Response({"status": "ok"})
 
+
 urlpatterns = [
     path("", api_root, name="api-root"),
     path("admin/", admin.site.urls),
@@ -64,7 +70,9 @@ urlpatterns = [
     ),
     path(
         "api/docs/",
-        SpectacularSwaggerView.as_view(url_name="schema", permission_classes=[AllowAny]),
+        SpectacularSwaggerView.as_view(
+            url_name="schema", permission_classes=[AllowAny]
+        ),
         name="swagger-ui",
     ),
     path(
