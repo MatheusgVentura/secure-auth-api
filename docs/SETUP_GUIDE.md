@@ -6,15 +6,12 @@ Publico-alvo: pessoa desenvolvedora que clonou o repositorio e quer deixar as de
 
 ## Estado atual
 
-O projeto Django ainda nao foi criado neste repositorio. Por isso, alguns comandos deste guia estao marcados como "quando o projeto Django existir".
-
-Hoje voce ja consegue:
+O projeto Django ja existe neste repositorio. Hoje voce consegue:
 
 - Criar o ambiente virtual.
 - Instalar as dependencias.
 - Criar o arquivo `.env` local a partir do `.env.example`.
-
-Voce ainda nao consegue rodar `manage.py`, migrations, testes Django ou servidor local, porque esses arquivos serao criados durante o MVP.
+- Rodar `manage.py`, migrations, testes Django e servidor local.
 
 ## Requisitos
 
@@ -108,8 +105,8 @@ Variaveis iniciais:
 
 | Variavel | Exemplo | Descricao |
 | --- | --- | --- |
-| `SECRET_KEY` | `change-me` | Chave secreta do Django. Use um valor forte fora do ambiente local. |
-| `DEBUG` | `True` | Ativa detalhes de debug apenas em desenvolvimento. |
+| `SECRET_KEY` | `change-me-to-a-long-random-secret-key` | Chave secreta do Django. Use um valor forte fora do ambiente local. |
+| `DJANGO_DEBUG` | `True` | Ativa detalhes de debug apenas em desenvolvimento. |
 | `ALLOWED_HOSTS` | `localhost,127.0.0.1` | Hosts permitidos para atender requisicoes. |
 | `DATABASE_URL` | `sqlite:///db.sqlite3` | URL de conexao do banco. |
 | `ACCESS_TOKEN_LIFETIME_MINUTES` | `15` | Duracao planejada do access token. |
@@ -127,22 +124,6 @@ Confira se as dependencias foram instaladas:
 
 ```powershell
 pip freeze
-```
-
-## Quando o projeto Django existir
-
-Os comandos abaixo fazem parte da proxima etapa de implementacao.
-
-Criar o projeto Django:
-
-```powershell
-django-admin startproject config .
-```
-
-Criar o app de usuarios/autenticacao:
-
-```powershell
-python manage.py startapp accounts
 ```
 
 Rodar migrations:
@@ -172,10 +153,10 @@ http://127.0.0.1:8000/
 Rodar testes:
 
 ```powershell
-python manage.py test
+python -m pytest
 ```
 
-Os testes fazem parte do MVP. Depois que forem implementados, esse comando deve validar os fluxos principais de cadastro, login, refresh, logout, `/users/me/` e troca de senha.
+Os testes fazem parte do MVP. A suite inicial valida modelo de usuario, health check, cadastro, login, `/users/me/` e troca de senha.
 
 ## Manutencao de dependencias
 
@@ -216,8 +197,6 @@ pip install -r requirements.txt
 
 ## Proximos ajustes neste guia
 
-- Atualizar comandos depois que `manage.py` existir.
-- Adicionar instrucoes dos testes automatizados implementados.
 - Adicionar instrucoes para Swagger/OpenAPI.
 - Adicionar instrucoes de Docker.
 - Adicionar instrucoes para banco de dados de producao.

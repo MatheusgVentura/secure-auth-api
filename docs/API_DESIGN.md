@@ -263,6 +263,8 @@ Regras planejadas:
 
 ## Padrao de erros
 
+Erros de validacao devem retornar os detalhes dentro da chave `errors`.
+
 Erro de validacao `400 Bad Request`:
 
 ```json
@@ -272,6 +274,8 @@ Erro de validacao `400 Bad Request`:
   }
 }
 ```
+
+Erros de autenticacao devem usar mensagem generica para nao revelar se o email existe.
 
 Erro de autenticacao `401 Unauthorized`:
 

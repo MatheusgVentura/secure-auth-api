@@ -6,13 +6,15 @@ O foco e entregar primeiro um MVP pequeno, completo e bem documentado com **Pyth
 
 ## Status do projeto
 
-Este repositorio esta na fase inicial de preparacao. No momento, existem os arquivos de configuracao e planejamento, mas o projeto Django ainda nao foi criado.
+Este repositorio ja possui a fundacao do projeto Django e os primeiros endpoints do MVP.
 
 Itens ja presentes:
 
-- `requirements.txt` com dependencias iniciais.
-- `.env.example` com variaveis locais esperadas.
-- `.gitignore` para arquivos sensiveis e artefatos locais.
+- Projeto Django em `config/` com settings separados para desenvolvimento, teste e producao.
+- App `accounts` com usuario customizado usando email como login.
+- Django REST Framework configurado com JWT.
+- Endpoints iniciais de health check, cadastro, login, refresh, logout, usuario autenticado e troca de senha.
+- Testes automatizados iniciais com pytest.
 - Documentacao inicial em `docs/`.
 
 Consulte o [roadmap](docs/ROADMAP.md) para acompanhar o MVP e as melhorias futuras.
@@ -49,9 +51,102 @@ pip install -r requirements.txt
 Copy-Item .env.example .env
 ```
 
-O projeto Django ainda sera criado. Quando isso acontecer, o guia de setup sera atualizado com os comandos para migrations, superusuario, testes e servidor local.
+Depois de instalar as dependencias e criar o `.env`, rode:
+
+```powershell
+python manage.py migrate
+python -m pytest
+python manage.py runserver
+```
+
+Com o servidor rodando, acesse:
+
+```txt
+http://127.0.0.1:8000/
+```
 
 Leia o [guia de setup local](docs/SETUP_GUIDE.md) para instrucoes completas.
+
+## Exemplos de uso da API
+
+Os exemplos abaixo usam PowerShell com `Invoke-RestMethod`.
+
+### Health check
+
+```powershell
+Invoke-RestMethod http://127.0.0.1:8000/api/v1/health/
+```
+
+Resposta esperada:
+
+```json
+{
+  "status": "ok"
+}
+```
+
+### Cadastro
+
+```powershell
+Invoke-RestMethod `
+  -Uri http://127.0.0.1:8000/api/v1/auth/register/ `
+  -Method Post `
+  -ContentType "application/json" `
+  -Body '{"username":"matheus","email":"matheus@example.com","password":"SenhaForte123!","password_confirm":"SenhaForte123!"}'
+```
+
+### Login
+
+```powershell
+$login = Invoke-RestMethod `
+  -Uri http://127.0.0.1:8000/api/v1/auth/login/ `
+  -Method Post `
+  -ContentType "application/json" `
+  -Body '{"email":"matheus@example.com","password":"SenhaForte123!"}'
+
+$access = $login.access
+$refresh = $login.refresh
+```
+
+### Usuario autenticado
+
+```powershell
+Invoke-RestMethod `
+  -Uri http://127.0.0.1:8000/api/v1/users/me/ `
+  -Headers @{ Authorization = "Bearer $access" }
+```
+
+### Refresh token
+
+```powershell
+Invoke-RestMethod `
+  -Uri http://127.0.0.1:8000/api/v1/auth/token/refresh/ `
+  -Method Post `
+  -ContentType "application/json" `
+  -Body "{`"refresh`":`"$refresh`"}"
+```
+
+### Troca de senha
+
+```powershell
+Invoke-RestMethod `
+  -Uri http://127.0.0.1:8000/api/v1/auth/change-password/ `
+  -Method Post `
+  -Headers @{ Authorization = "Bearer $access" } `
+  -ContentType "application/json" `
+  -Body '{"current_password":"SenhaForte123!","new_password":"NovaSenhaForte123!","new_password_confirm":"NovaSenhaForte123!"}'
+```
+
+### Logout
+
+```powershell
+Invoke-RestMethod `
+  -Uri http://127.0.0.1:8000/api/v1/auth/logout/ `
+  -Method Post `
+  -Headers @{ Authorization = "Bearer $access" } `
+  -ContentType "application/json" `
+  -Body "{`"refresh`":`"$refresh`"}"
+```
 
 ## Documentacao
 

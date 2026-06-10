@@ -85,7 +85,7 @@ Este documento lista requisitos de seguranca planejados para o MVP da API. Ele f
 | Variavel | Papel |
 | --- | --- |
 | `SECRET_KEY` | Chave secreta do Django. Deve ser forte fora do ambiente local. |
-| `DEBUG` | Deve ser `False` em producao. |
+| `DJANGO_DEBUG` | Deve ser `False` em producao. |
 | `ALLOWED_HOSTS` | Define hosts aceitos pela aplicacao. |
 | `DATABASE_URL` | Define conexao com banco por ambiente. |
 | `ACCESS_TOKEN_LIFETIME_MINUTES` | Controla duracao do access token. |

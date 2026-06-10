@@ -38,11 +38,11 @@ Objetivo: deixar o repositorio pronto para receber o projeto Django.
 - [x] Criar arquivo `.env.example`.
 - [x] Criar arquivo `.gitignore`.
 - [x] Documentar setup local inicial.
-- [ ] Criar projeto Django com `django-admin startproject config .`.
-- [ ] Criar app principal de usuarios/autenticacao.
-- [ ] Configurar variaveis de ambiente no Django.
-- [ ] Configurar banco de dados inicial.
-- [ ] Configurar Django REST Framework.
+- [x] Criar projeto Django com `django-admin startproject config .`.
+- [x] Criar app principal de usuarios/autenticacao.
+- [x] Configurar variaveis de ambiente no Django.
+- [x] Configurar banco de dados inicial.
+- [x] Configurar Django REST Framework.
 
 Criterio de pronto:
 
@@ -55,12 +55,13 @@ Criterio de pronto:
 
 Objetivo: criar a estrutura minima da API antes da autenticacao completa.
 
-- [ ] Configurar apps instalados.
-- [ ] Configurar rotas principais.
-- [ ] Configurar versionamento inicial em `/api/v1/`.
-- [ ] Criar endpoint de health check.
-- [ ] Padronizar respostas de sucesso e erro.
-- [ ] Configurar serializadores iniciais.
+- [x] Configurar apps instalados.
+- [x] Configurar rotas principais.
+- [x] Configurar versionamento inicial em `/api/v1/`.
+- [x] Criar endpoint de health check.
+- [x] Padronizar respostas de sucesso e erro.
+- [x] Configurar serializadores iniciais.
+- [x] Criar resposta de indice na raiz `/` com endpoints principais.
 
 Criterio de pronto:
 
@@ -72,13 +73,13 @@ Criterio de pronto:
 
 Objetivo: criar usuario customizado com email como login antes dos endpoints de autenticacao.
 
-- [ ] Criar modelo customizado `accounts.User`.
-- [ ] Configurar `AUTH_USER_MODEL`.
-- [ ] Usar email como `USERNAME_FIELD`.
-- [ ] Criar manager customizado.
-- [ ] Criar migrations iniciais.
-- [ ] Validar criacao de usuario comum.
-- [ ] Validar criacao de superusuario.
+- [x] Criar modelo customizado `accounts.User`.
+- [x] Configurar `AUTH_USER_MODEL`.
+- [x] Usar email como `USERNAME_FIELD`.
+- [x] Criar manager customizado.
+- [x] Criar migrations iniciais.
+- [x] Validar criacao de usuario comum.
+- [x] Validar criacao de superusuario.
 
 Criterio de pronto:
 
@@ -91,12 +92,12 @@ Criterio de pronto:
 
 Objetivo: implementar os fluxos principais de autenticacao da API.
 
-- [ ] Criar cadastro de usuario.
-- [ ] Criar login com JWT.
-- [ ] Criar refresh token.
-- [ ] Criar endpoint para dados do usuario autenticado.
-- [ ] Criar logout com blacklist de refresh token.
-- [ ] Criar troca de senha para usuario autenticado.
+- [x] Criar cadastro de usuario.
+- [x] Criar login com JWT.
+- [x] Criar refresh token.
+- [x] Criar endpoint para dados do usuario autenticado.
+- [x] Criar logout com blacklist de refresh token.
+- [x] Criar troca de senha para usuario autenticado.
 
 Criterio de pronto:
 
@@ -109,14 +110,14 @@ Criterio de pronto:
 
 Objetivo: reforcar os controles de seguranca necessarios para o MVP.
 
-- [ ] Validar senha forte.
-- [ ] Configurar permissoes por usuario autenticado.
-- [ ] Configurar CORS.
-- [ ] Configurar rate limiting/throttling.
-- [ ] Proteger endpoints sensiveis contra brute force.
-- [ ] Garantir que segredos nao fiquem no codigo-fonte.
-- [ ] Configurar ambientes de desenvolvimento e producao separadamente.
-- [ ] Revisar mensagens de erro para nao revelar dados sensiveis.
+- [x] Validar senha forte.
+- [x] Configurar permissoes por usuario autenticado.
+- [x] Configurar CORS.
+- [x] Configurar rate limiting/throttling.
+- [x] Proteger endpoints sensiveis contra brute force.
+- [x] Garantir que segredos nao fiquem no codigo-fonte.
+- [x] Configurar ambientes de desenvolvimento e producao separadamente.
+- [x] Revisar mensagens de erro para nao revelar dados sensiveis.
 
 Criterio de pronto:
 
@@ -129,13 +130,13 @@ Criterio de pronto:
 
 Objetivo: adicionar testes automatizados basicos para mostrar maturidade tecnica sem aumentar demais o escopo.
 
-- [ ] Criar testes automatizados para cadastro.
-- [ ] Criar testes automatizados para login.
-- [ ] Criar testes automatizados para refresh token.
-- [ ] Criar testes automatizados para logout.
-- [ ] Criar testes automatizados para `/users/me/` autenticado e nao autenticado.
-- [ ] Criar testes automatizados para troca de senha.
-- [ ] Documentar como rodar os testes.
+- [x] Criar testes automatizados para cadastro.
+- [x] Criar testes automatizados para login.
+- [x] Criar testes automatizados para refresh token.
+- [x] Criar testes automatizados para logout.
+- [x] Criar testes automatizados para `/users/me/` autenticado e nao autenticado.
+- [x] Criar testes automatizados para troca de senha.
+- [x] Documentar como rodar os testes.
 
 Criterio de pronto:
 
@@ -152,9 +153,9 @@ Objetivo: transformar a API em um projeto facil de entender no GitHub, mesmo sem
 - [x] Documentar exemplos planejados de requisicao e resposta.
 - [x] Documentar modelo de dados planejado.
 - [x] Documentar requisitos de seguranca.
-- [ ] Atualizar README com comandos reais depois que o Django existir.
-- [ ] Adicionar exemplos de uso com `curl` ou cliente HTTP depois que os endpoints existirem.
-- [ ] Explicar no README que o projeto e um estudo bem feito para estagio.
+- [x] Atualizar README com comandos reais depois que o Django existir.
+- [x] Adicionar exemplos de uso com `curl` ou cliente HTTP depois que os endpoints existirem.
+- [x] Explicar no README que o projeto e um estudo bem feito para estagio.
 - [ ] Preparar descricao final do projeto para portfolio.
 
 Criterio de pronto:
