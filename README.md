@@ -65,7 +65,23 @@ Com o servidor rodando, acesse:
 http://127.0.0.1:8000/
 ```
 
+Documentacao interativa da API:
+
+```txt
+http://127.0.0.1:8000/api/docs/
+```
+
 Leia o [guia de setup local](docs/SETUP_GUIDE.md) para instrucoes completas.
+
+## Documentacao OpenAPI
+
+O projeto disponibiliza documentacao interativa e schema OpenAPI para facilitar testes, revisao e apresentacao da API.
+
+| Recurso | URL local |
+| --- | --- |
+| Swagger UI | `http://127.0.0.1:8000/api/docs/` |
+| ReDoc | `http://127.0.0.1:8000/api/redoc/` |
+| Schema OpenAPI | `http://127.0.0.1:8000/api/schema/` |
 
 ## Exemplos de uso da API
 

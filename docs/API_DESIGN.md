@@ -32,6 +32,14 @@ Base URL planejada:
 /api/v1/
 ```
 
+Documentacao local:
+
+```txt
+/api/docs/
+/api/redoc/
+/api/schema/
+```
+
 Formato de requisicao e resposta:
 
 ```txt

@@ -16,6 +16,7 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import include, path
+from drf_spectacular.views import SpectacularAPIView, SpectacularRedocView, SpectacularSwaggerView
 from rest_framework.decorators import api_view, permission_classes
 from rest_framework.permissions import AllowAny
 from rest_framework.response import Response
@@ -29,6 +30,9 @@ def api_root(request):
             "name": "Django Secure Auth API",
             "version": "v1",
             "endpoints": {
+                "schema": request.build_absolute_uri("/api/schema/"),
+                "swagger": request.build_absolute_uri("/api/docs/"),
+                "redoc": request.build_absolute_uri("/api/redoc/"),
                 "health": request.build_absolute_uri("/api/v1/health/"),
                 "register": request.build_absolute_uri("/api/v1/auth/register/"),
                 "login": request.build_absolute_uri("/api/v1/auth/login/"),
@@ -53,6 +57,21 @@ def health_check(request):
 urlpatterns = [
     path("", api_root, name="api-root"),
     path("admin/", admin.site.urls),
+    path(
+        "api/schema/",
+        SpectacularAPIView.as_view(permission_classes=[AllowAny]),
+        name="schema",
+    ),
+    path(
+        "api/docs/",
+        SpectacularSwaggerView.as_view(url_name="schema", permission_classes=[AllowAny]),
+        name="swagger-ui",
+    ),
+    path(
+        "api/redoc/",
+        SpectacularRedocView.as_view(url_name="schema", permission_classes=[AllowAny]),
+        name="redoc",
+    ),
     path("api/v1/health/", health_check, name="health"),
     path("api/v1/", include("apps.accounts.urls")),
 ]

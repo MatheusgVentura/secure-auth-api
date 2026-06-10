@@ -8,7 +8,22 @@ def test_api_root_lists_main_endpoints(api_client):
 
     assert response.status_code == status.HTTP_200_OK
     assert response.data["name"] == "Django Secure Auth API"
+    assert response.data["endpoints"]["swagger"].endswith("/api/docs/")
     assert response.data["endpoints"]["health"].endswith("/api/v1/health/")
+
+
+def test_openapi_schema_is_public(api_client):
+    response = api_client.get(reverse("schema"))
+
+    assert response.status_code == status.HTTP_200_OK
+    assert response.data["info"]["title"] == "Django Secure Auth API"
+    assert "/api/v1/auth/login/" in response.data["paths"]
+
+
+def test_swagger_ui_is_public(api_client):
+    response = api_client.get(reverse("swagger-ui"))
+
+    assert response.status_code == status.HTTP_200_OK
 
 
 @pytest.mark.django_db

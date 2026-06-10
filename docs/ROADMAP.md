@@ -169,7 +169,7 @@ Criterio de pronto:
 
 Objetivo: evoluir o projeto apenas depois que a primeira versao pequena estiver pronta.
 
-- [ ] Adicionar Swagger/OpenAPI.
+- [x] Adicionar Swagger/OpenAPI.
 - [ ] Configurar lint/formatacao.
 - [ ] Configurar cobertura de testes.
 - [ ] Configurar Docker.
