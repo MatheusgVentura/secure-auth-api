@@ -260,7 +260,7 @@ Neste momento, o projeto foi pensado para ficar bem apresentado no GitHub. Por i
 
 Deploy publico fica como melhoria futura, depois que o MVP estiver implementado e testado.
 
-## Descricao para portfolio
+## Sobre o projeto
 
 Secure Auth API e uma API REST de autenticacao criada com Django, Django REST Framework e JWT. O projeto implementa um fluxo completo de autenticacao com usuario customizado baseado em email, cadastro, login, refresh token, logout com blacklist, consulta do usuario autenticado e troca de senha.
 
