@@ -158,6 +158,14 @@ python -m pytest
 
 Os testes fazem parte do MVP. A suite inicial valida modelo de usuario, health check, cadastro, login, `/users/me/` e troca de senha.
 
+O projeto exige cobertura minima de 90%. Ao rodar os testes, o `pytest` mostra a cobertura no terminal e gera um relatorio HTML em `htmlcov/`.
+
+Para abrir o relatorio:
+
+```powershell
+Start-Process htmlcov\index.html
+```
+
 ## Verificar qualidade de codigo
 
 O projeto usa `ruff` para lint e formatacao.

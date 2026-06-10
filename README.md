@@ -109,6 +109,20 @@ python -m ruff format . --check
 python -m pytest
 ```
 
+## Cobertura de testes
+
+A cobertura minima configurada e de 90%. O comando abaixo roda os testes, mostra a cobertura no terminal e gera um relatorio HTML em `htmlcov/`.
+
+```powershell
+python -m pytest
+```
+
+Abrir relatorio HTML no Windows:
+
+```powershell
+Start-Process htmlcov\index.html
+```
+
 ## Exemplos de uso da API
 
 Os exemplos abaixo usam PowerShell com `Invoke-RestMethod`.

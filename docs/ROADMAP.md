@@ -171,7 +171,7 @@ Objetivo: evoluir o projeto apenas depois que a primeira versao pequena estiver 
 
 - [x] Adicionar Swagger/OpenAPI.
 - [x] Configurar lint/formatacao.
-- [ ] Configurar cobertura de testes.
+- [x] Configurar cobertura de testes.
 - [ ] Configurar Docker.
 - [ ] Criar `docker-compose.yml`.
 - [ ] Implementar recuperacao de senha por email.
