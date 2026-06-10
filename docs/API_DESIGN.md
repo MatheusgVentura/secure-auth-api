@@ -11,6 +11,7 @@ Incluido no MVP:
 - Login com JWT.
 - Refresh de access token.
 - Logout.
+- Recuperacao de senha.
 - Dados do usuario autenticado.
 - Troca de senha.
 
@@ -62,6 +63,8 @@ Campos de senha nunca devem aparecer em respostas.
 | `POST` | `/api/v1/auth/register/` | Publico | Criar uma conta de usuario. |
 | `POST` | `/api/v1/auth/login/` | Publico | Autenticar usuario e emitir tokens. |
 | `POST` | `/api/v1/auth/token/refresh/` | Publico | Gerar novo access token. |
+| `POST` | `/api/v1/auth/password-reset/` | Publico | Solicitar recuperacao de senha por email. |
+| `POST` | `/api/v1/auth/password-reset/confirm/` | Publico | Confirmar recuperacao e definir nova senha. |
 | `POST` | `/api/v1/auth/logout/` | Privado | Invalidar refresh token. |
 | `GET` | `/api/v1/users/me/` | Privado | Consultar o usuario autenticado. |
 | `POST` | `/api/v1/auth/change-password/` | Privado | Trocar a propria senha. |
@@ -181,6 +184,70 @@ Regras planejadas:
 
 - Refresh tokens invalidos, expirados ou em blacklist devem ser rejeitados.
 - O endpoint deve ter throttling/rate limiting.
+
+### Solicitar recuperacao de senha
+
+```http
+POST /api/v1/auth/password-reset/
+```
+
+Solicita instrucoes de recuperacao de senha por email.
+
+Requisicao:
+
+```json
+{
+  "email": "matheus@example.com"
+}
+```
+
+Resposta `200 OK`:
+
+```json
+{
+  "detail": "Se o email estiver cadastrado, enviaremos instrucoes para redefinir a senha."
+}
+```
+
+Regras:
+
+- A resposta deve ser generica para nao revelar se o email existe.
+- O email so deve ser enviado para usuarios ativos cadastrados.
+- O endpoint deve ter throttling/rate limiting.
+
+### Confirmar recuperacao de senha
+
+```http
+POST /api/v1/auth/password-reset/confirm/
+```
+
+Redefine a senha usando `uid` e `token` recebidos por email.
+
+Requisicao:
+
+```json
+{
+  "uid": "uid_recebido",
+  "token": "token_recebido",
+  "new_password": "NovaSenha123!",
+  "new_password_confirm": "NovaSenha123!"
+}
+```
+
+Resposta `200 OK`:
+
+```json
+{
+  "detail": "Senha redefinida com sucesso."
+}
+```
+
+Regras:
+
+- `uid` e `token` devem ser validos.
+- `new_password` e `new_password_confirm` devem ser iguais.
+- A nova senha deve passar pelos validadores configurados.
+- A senha deve ser salva usando os mecanismos nativos do Django.
 
 ## Endpoints autenticados
 

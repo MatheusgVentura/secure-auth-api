@@ -45,6 +45,12 @@ def api_root(request):
                     "/api/v1/auth/token/refresh/"
                 ),
                 "logout": request.build_absolute_uri("/api/v1/auth/logout/"),
+                "password_reset": request.build_absolute_uri(
+                    "/api/v1/auth/password-reset/"
+                ),
+                "password_reset_confirm": request.build_absolute_uri(
+                    "/api/v1/auth/password-reset/confirm/"
+                ),
                 "me": request.build_absolute_uri("/api/v1/users/me/"),
                 "change_password": request.build_absolute_uri(
                     "/api/v1/auth/change-password/"

@@ -1,5 +1,9 @@
 import pytest
+from django.contrib.auth.tokens import default_token_generator
+from django.core import mail
 from django.urls import reverse
+from django.utils.encoding import force_bytes
+from django.utils.http import urlsafe_base64_encode
 from rest_framework import status
 
 
@@ -10,6 +14,9 @@ def test_api_root_lists_main_endpoints(api_client):
     assert response.data["name"] == "Django Secure Auth API"
     assert response.data["endpoints"]["swagger"].endswith("/api/docs/")
     assert response.data["endpoints"]["health"].endswith("/api/v1/health/")
+    assert response.data["endpoints"]["password_reset"].endswith(
+        "/api/v1/auth/password-reset/"
+    )
 
 
 def test_openapi_schema_is_public(api_client):
@@ -206,3 +213,88 @@ def test_change_password_updates_user_password(authenticated_api_client, user):
 
     assert response.status_code == status.HTTP_200_OK
     assert user.check_password("NovaSenhaForte123!")
+
+
+@pytest.mark.django_db
+def test_password_reset_request_sends_email_for_existing_user(api_client, user):
+    response = api_client.post(
+        reverse("password-reset"),
+        {"email": user.email},
+        format="json",
+    )
+
+    assert response.status_code == status.HTTP_200_OK
+    assert response.data == {
+        "detail": (
+            "Se o email estiver cadastrado, enviaremos instrucoes "
+            "para redefinir a senha."
+        )
+    }
+    assert len(mail.outbox) == 1
+    assert user.email in mail.outbox[0].to
+    assert "uid:" in mail.outbox[0].body
+    assert "token:" in mail.outbox[0].body
+
+
+@pytest.mark.django_db
+def test_password_reset_request_does_not_reveal_missing_email(api_client):
+    response = api_client.post(
+        reverse("password-reset"),
+        {"email": "missing@example.com"},
+        format="json",
+    )
+
+    assert response.status_code == status.HTTP_200_OK
+    assert response.data == {
+        "detail": (
+            "Se o email estiver cadastrado, enviaremos instrucoes "
+            "para redefinir a senha."
+        )
+    }
+    assert len(mail.outbox) == 0
+
+
+@pytest.mark.django_db
+def test_password_reset_confirm_updates_password(api_client, user):
+    uid = urlsafe_base64_encode(force_bytes(user.pk))
+    token = default_token_generator.make_token(user)
+
+    response = api_client.post(
+        reverse("password-reset-confirm"),
+        {
+            "uid": uid,
+            "token": token,
+            "new_password": "NovaSenhaForte123!",
+            "new_password_confirm": "NovaSenhaForte123!",
+        },
+        format="json",
+    )
+
+    user.refresh_from_db()
+
+    assert response.status_code == status.HTTP_200_OK
+    assert response.data == {"detail": "Senha redefinida com sucesso."}
+    assert user.check_password("NovaSenhaForte123!")
+
+
+@pytest.mark.django_db
+def test_password_reset_confirm_rejects_invalid_token(api_client, user):
+    uid = urlsafe_base64_encode(force_bytes(user.pk))
+
+    response = api_client.post(
+        reverse("password-reset-confirm"),
+        {
+            "uid": uid,
+            "token": "token-invalido",
+            "new_password": "NovaSenhaForte123!",
+            "new_password_confirm": "NovaSenhaForte123!",
+        },
+        format="json",
+    )
+
+    assert response.status_code == status.HTTP_400_BAD_REQUEST
+    assert response.data == {
+        "errors": {
+            "token": ["Token de recuperacao invalido."],
+        }
+    }

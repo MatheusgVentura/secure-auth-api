@@ -225,6 +225,28 @@ Invoke-RestMethod `
   -Body '{"current_password":"SenhaForte123!","new_password":"NovaSenhaForte123!","new_password_confirm":"NovaSenhaForte123!"}'
 ```
 
+### Recuperacao de senha
+
+Solicitar recuperacao:
+
+```powershell
+Invoke-RestMethod `
+  -Uri http://127.0.0.1:8000/api/v1/auth/password-reset/ `
+  -Method Post `
+  -ContentType "application/json" `
+  -Body '{"email":"matheus@example.com"}'
+```
+
+Em desenvolvimento, o email aparece no console do servidor. Use o `uid` e o `token` recebidos para redefinir a senha:
+
+```powershell
+Invoke-RestMethod `
+  -Uri http://127.0.0.1:8000/api/v1/auth/password-reset/confirm/ `
+  -Method Post `
+  -ContentType "application/json" `
+  -Body '{"uid":"UID_RECEBIDO","token":"TOKEN_RECEBIDO","new_password":"NovaSenhaForte123!","new_password_confirm":"NovaSenhaForte123!"}'
+```
+
 ### Logout
 
 ```powershell
@@ -303,6 +325,7 @@ Principais destaques tecnicos:
 - Usuario customizado com email como identificador principal.
 - Autenticacao JWT com access token e refresh token.
 - Logout com blacklist de refresh token.
+- Recuperacao de senha por email com token nativo do Django.
 - Endpoints privados protegidos por permissao.
 - Validacao de senha com validadores nativos do Django.
 - Respostas de erro padronizadas para validacao.

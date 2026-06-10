@@ -14,3 +14,9 @@ PASSWORD_HASHERS = [
 ]
 
 EMAIL_BACKEND = "django.core.mail.backends.locmem.EmailBackend"
+
+REST_FRAMEWORK["DEFAULT_THROTTLE_RATES"] = {
+    "anon": "10000/hour",
+    "user": "10000/hour",
+    "auth": "10000/min",
+}

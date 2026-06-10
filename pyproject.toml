@@ -20,7 +20,7 @@ select = [
 [tool.ruff.lint.per-file-ignores]
 "config/settings/development.py" = ["F403"]
 "config/settings/production.py" = ["F403"]
-"config/settings/test.py" = ["F403"]
+"config/settings/test.py" = ["F403", "F405"]
 
 [tool.ruff.format]
 quote-style = "double"

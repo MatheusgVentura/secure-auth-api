@@ -111,6 +111,8 @@ Variaveis iniciais:
 | `DATABASE_URL` | `sqlite:///db.sqlite3` | URL de conexao do banco. |
 | `ACCESS_TOKEN_LIFETIME_MINUTES` | `15` | Duracao planejada do access token. |
 | `REFRESH_TOKEN_LIFETIME_DAYS` | `7` | Duracao planejada do refresh token. |
+| `DEFAULT_FROM_EMAIL` | `noreply@example.com` | Remetente usado nos emails da aplicacao. |
+| `PASSWORD_RESET_TIMEOUT_SECONDS` | `3600` | Validade do token de recuperacao de senha. |
 
 ## Verificar instalacao
 

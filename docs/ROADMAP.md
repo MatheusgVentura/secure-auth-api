@@ -174,7 +174,7 @@ Objetivo: evoluir o projeto apenas depois que a primeira versao pequena estiver 
 - [x] Configurar cobertura de testes.
 - [x] Configurar Docker.
 - [x] Criar `docker-compose.yml`.
-- [ ] Implementar recuperacao de senha por email.
+- [x] Implementar recuperacao de senha por email.
 - [ ] Implementar verificacao de email.
 - [ ] Avaliar atualizacao de perfil.
 - [ ] Avaliar login social.

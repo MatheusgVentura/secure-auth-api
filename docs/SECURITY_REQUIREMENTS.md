@@ -22,6 +22,7 @@ Este documento lista requisitos de seguranca planejados para o MVP da API. Ele f
 | Refresh token ter vida maior que access token. | Sim | Configuracao por `REFRESH_TOKEN_LIFETIME_DAYS`. |
 | Logout invalidar refresh token. | Sim | Blacklist configurada e teste de logout. |
 | Login nao revelar se o email existe. | Sim | Mensagem generica para credenciais invalidas. |
+| Recuperacao de senha nao revelar se o email existe. | Sim | Resposta generica para solicitacao de reset. |
 
 ### Senhas
 
@@ -32,6 +33,7 @@ Este documento lista requisitos de seguranca planejados para o MVP da API. Ele f
 | Exigir confirmacao em cadastro. | Sim | Validacao de `password_confirm`. |
 | Exigir confirmacao em troca de senha. | Sim | Validacao de `new_password_confirm`. |
 | Validar senha atual antes da troca. | Sim | Teste para senha atual invalida. |
+| Recuperacao de senha exigir token valido. | Sim | Token nativo do Django e teste de token invalido. |
 | Nunca retornar senha ou hash em serializers. | Sim | Campos sensiveis ausentes nas respostas. |
 
 ### Permissoes
@@ -90,6 +92,8 @@ Este documento lista requisitos de seguranca planejados para o MVP da API. Ele f
 | `DATABASE_URL` | Define conexao com banco por ambiente. |
 | `ACCESS_TOKEN_LIFETIME_MINUTES` | Controla duracao do access token. |
 | `REFRESH_TOKEN_LIFETIME_DAYS` | Controla duracao do refresh token. |
+| `DEFAULT_FROM_EMAIL` | Define remetente usado em emails da aplicacao. |
+| `PASSWORD_RESET_TIMEOUT_SECONDS` | Controla validade do token de recuperacao de senha. |
 
 ## Testes de seguranca planejados
 
@@ -101,6 +105,8 @@ Este documento lista requisitos de seguranca planejados para o MVP da API. Ele f
 - Refresh token invalido nao gera novo access token.
 - Logout invalida o refresh token quando blacklist estiver ativa.
 - Troca de senha exige senha atual correta.
+- Recuperacao de senha usa resposta generica para email cadastrado ou nao cadastrado.
+- Recuperacao de senha rejeita token invalido.
 - Respostas publicas nao incluem senha, hash ou campos sensiveis.
 
 ## Criterios de pronto
