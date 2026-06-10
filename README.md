@@ -123,6 +123,38 @@ Abrir relatorio HTML no Windows:
 Start-Process htmlcov\index.html
 ```
 
+## Rodar com Docker
+
+Crie o `.env` local antes de subir o container:
+
+```powershell
+Copy-Item .env.example .env
+```
+
+Suba a API:
+
+```powershell
+docker compose up --build
+```
+
+Acesse:
+
+```txt
+http://127.0.0.1:8000/
+```
+
+Rodar testes dentro do container:
+
+```powershell
+docker compose run --rm api python -m pytest
+```
+
+Parar e remover containers:
+
+```powershell
+docker compose down
+```
+
 ## Exemplos de uso da API
 
 Os exemplos abaixo usam PowerShell com `Invoke-RestMethod`.

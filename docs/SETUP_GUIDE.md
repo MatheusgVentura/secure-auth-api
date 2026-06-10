@@ -188,6 +188,42 @@ Formate o codigo:
 python -m ruff format .
 ```
 
+## Rodar com Docker
+
+Requisitos:
+
+- Docker Desktop instalado e em execucao.
+
+Crie o `.env` local:
+
+```powershell
+Copy-Item .env.example .env
+```
+
+Suba a API:
+
+```powershell
+docker compose up --build
+```
+
+O compose executa as migrations e inicia o servidor em:
+
+```txt
+http://127.0.0.1:8000/
+```
+
+Rode os testes dentro do container:
+
+```powershell
+docker compose run --rm api python -m pytest
+```
+
+Pare os containers:
+
+```powershell
+docker compose down
+```
+
 ## Manutencao de dependencias
 
 O `requirements.txt` usa intervalos de versao para permitir atualizacoes compativeis no inicio do projeto.
