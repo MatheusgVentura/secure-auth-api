@@ -1,6 +1,6 @@
 # Modelo de Dados
 
-Este documento e uma referencia das decisoes iniciais sobre os modelos de dados da API. Ele deve ser atualizado quando os models reais forem criados ou alterados.
+Este documento e uma referencia das decisoes iniciais sobre os modelos de dados do MVP da API. Ele deve ser atualizado quando os models reais forem criados ou alterados.
 
 ## Decisao principal
 
@@ -129,7 +129,7 @@ Campos que podem ser adicionados depois:
 | `created_at` | Data tecnica de criacao. |
 | `updated_at` | Data tecnica da ultima atualizacao. |
 
-Esses campos nao entram necessariamente na primeira versao. A prioridade inicial e manter o modelo pequeno e seguro.
+Esses campos ficam fora do MVP. A prioridade inicial e manter o modelo pequeno e seguro.
 
 ## Modelos futuros possiveis
 
@@ -161,3 +161,4 @@ O modelo de usuario inicial estara pronto quando:
 - Manter o modelo inicial pequeno.
 - Evitar armazenar dados sensiveis desnecessarios.
 - Usar os mecanismos nativos do Django para senha e permissoes.
+- Deixar perfis, auditoria e recuperacao de senha para depois do MVP.

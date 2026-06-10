@@ -1,6 +1,6 @@
 # Requisitos de Seguranca
 
-Este documento lista requisitos de seguranca planejados para a API. Ele funciona como checklist tecnico para implementacao, revisao e apresentacao do projeto no portfolio.
+Este documento lista requisitos de seguranca planejados para o MVP da API. Ele funciona como checklist tecnico para implementacao, revisao e apresentacao do projeto no GitHub.
 
 ## Principios
 
@@ -8,7 +8,7 @@ Este documento lista requisitos de seguranca planejados para a API. Ele funciona
 - Dados sensiveis nao devem ser expostos em respostas, logs, fixtures ou mensagens de erro.
 - Endpoints privados devem negar acesso por padrao.
 - Configuracoes devem variar por ambiente e nao ficar fixas no codigo-fonte.
-- Testes automatizados devem cobrir os fluxos sensiveis.
+- Testes automatizados basicos devem cobrir os fluxos sensiveis do MVP.
 
 ## Checklist por area
 
@@ -112,3 +112,14 @@ Uma funcionalidade sensivel so deve ser considerada pronta quando:
 - Pelo menos um caso de erro relevante tiver teste automatizado.
 - A documentacao de endpoint estiver atualizada.
 - Nenhum segredo ou dado sensivel tiver sido adicionado ao repositorio.
+
+## Fora do MVP
+
+Os itens abaixo podem melhorar o projeto, mas nao devem bloquear a primeira versao:
+
+- Recuperacao de senha por email.
+- Verificacao de email.
+- Login social.
+- Permissoes complexas.
+- Auditoria avancada.
+- Deploy publico.

@@ -1,10 +1,10 @@
 # Design Inicial da API
 
-Este documento e uma referencia dos endpoints planejados para a primeira versao da API. Ele descreve contratos esperados antes da implementacao e deve ser atualizado quando o codigo real for criado.
+Este documento e uma referencia dos endpoints planejados para o MVP da API. Ele descreve contratos esperados antes da implementacao e deve ser atualizado quando o codigo real for criado.
 
 ## Escopo
 
-Incluido neste design:
+Incluido no MVP:
 
 - Health check.
 - Cadastro de usuario.
@@ -12,15 +12,17 @@ Incluido neste design:
 - Refresh de access token.
 - Logout.
 - Dados do usuario autenticado.
-- Atualizacao basica do usuario autenticado.
 - Troca de senha.
 
-Fora deste design inicial:
+Fora do MVP:
 
 - Recuperacao de senha.
 - Verificacao de email.
 - Login social.
+- Frontend.
 - Administracao de usuarios por painel ou API.
+- Atualizacao de perfil.
+- Permissoes complexas.
 
 ## Padroes gerais
 
@@ -54,7 +56,6 @@ Campos de senha nunca devem aparecer em respostas.
 | `POST` | `/api/v1/auth/token/refresh/` | Publico | Gerar novo access token. |
 | `POST` | `/api/v1/auth/logout/` | Privado | Invalidar refresh token. |
 | `GET` | `/api/v1/users/me/` | Privado | Consultar o usuario autenticado. |
-| `PATCH` | `/api/v1/users/me/` | Privado | Atualizar dados basicos do usuario autenticado. |
 | `POST` | `/api/v1/auth/change-password/` | Privado | Trocar a propria senha. |
 
 ## Endpoints publicos
@@ -198,38 +199,6 @@ Regras planejadas:
 - O usuario so deve acessar os proprios dados.
 - A resposta nao deve incluir campos internos de permissao por padrao.
 
-### Atualizar usuario autenticado
-
-```http
-PATCH /api/v1/users/me/
-```
-
-Atualiza dados basicos do usuario autenticado.
-
-Requisicao:
-
-```json
-{
-  "username": "matheusventura"
-}
-```
-
-Resposta `200 OK`:
-
-```json
-{
-  "id": 1,
-  "username": "matheusventura",
-  "email": "matheus@example.com"
-}
-```
-
-Regras planejadas:
-
-- A primeira versao deve permitir apenas campos explicitamente liberados.
-- Alteracao de email deve ser avaliada separadamente, porque pode exigir verificacao.
-- Alteracao de senha deve ocorrer somente no endpoint de troca de senha.
-
 ### Trocar senha
 
 ```http
@@ -323,7 +292,8 @@ Erro de permissao `403 Forbidden`:
 ## Decisoes iniciais
 
 - Manter rotas versionadas desde o inicio.
-- Priorizar autenticacao e seguranca na primeira versao.
+- Priorizar um MVP pequeno, completo e facil de revisar.
 - Usar JSON em todos os endpoints.
 - Exigir JWT no header `Authorization` para endpoints privados.
 - Nao expor dados sensiveis em respostas ou mensagens de erro.
+- Deixar atualizacao de perfil, recuperacao de senha e login social para depois do MVP.

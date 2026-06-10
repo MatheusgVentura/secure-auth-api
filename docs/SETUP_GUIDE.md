@@ -1,8 +1,8 @@
 # Guia de Setup Local
 
-Este guia mostra como preparar o ambiente local para desenvolver a Secure Auth API.
+Este guia mostra como preparar o ambiente local para desenvolver o MVP da Secure Auth API.
 
-Publico-alvo: pessoa desenvolvedora que clonou o repositorio e quer deixar as dependencias prontas para iniciar a implementacao.
+Publico-alvo: pessoa desenvolvedora que clonou o repositorio e quer deixar as dependencias prontas para estudar, implementar e testar o projeto localmente.
 
 ## Estado atual
 
@@ -14,7 +14,7 @@ Hoje voce ja consegue:
 - Instalar as dependencias.
 - Criar o arquivo `.env` local a partir do `.env.example`.
 
-Voce ainda nao consegue rodar `manage.py`, migrations, testes Django ou servidor local, porque esses arquivos serao criados em uma fase posterior do roadmap.
+Voce ainda nao consegue rodar `manage.py`, migrations, testes Django ou servidor local, porque esses arquivos serao criados durante o MVP.
 
 ## Requisitos
 
@@ -175,6 +175,8 @@ Rodar testes:
 python manage.py test
 ```
 
+Os testes fazem parte do MVP. Depois que forem implementados, esse comando deve validar os fluxos principais de cadastro, login, refresh, logout, `/users/me/` e troca de senha.
+
 ## Manutencao de dependencias
 
 O `requirements.txt` usa intervalos de versao para permitir atualizacoes compativeis no inicio do projeto.
@@ -215,6 +217,7 @@ pip install -r requirements.txt
 ## Proximos ajustes neste guia
 
 - Atualizar comandos depois que `manage.py` existir.
-- Adicionar instrucoes de Docker.
+- Adicionar instrucoes dos testes automatizados implementados.
 - Adicionar instrucoes para Swagger/OpenAPI.
+- Adicionar instrucoes de Docker.
 - Adicionar instrucoes para banco de dados de producao.

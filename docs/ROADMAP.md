@@ -1,19 +1,35 @@
 # Roadmap do Projeto
 
-Este roadmap organiza a evolucao do projeto em fases pequenas. Ele ajuda a implementar, testar e apresentar a API com clareza.
+Este roadmap organiza a evolucao do projeto em fases pequenas. O objetivo principal e entregar primeiro um MVP de estudo bem feito para GitHub e portfolio de estagio.
 
 ## Como usar este roadmap
 
 - Marque um item como concluido apenas quando ele estiver implementado, testado quando aplicavel e documentado.
 - Se uma decisao mudar durante a implementacao, atualize tambem os documentos relacionados em `docs/`.
 - Mantenha as fases pequenas para facilitar revisao e commits.
+- Nao adicione funcionalidades fora do MVP antes de fechar a primeira versao completa.
 
 ## Legenda
 
 - `[x]` Concluido.
 - `[ ]` Pendente.
 
-## Fase 1 - Setup inicial
+## MVP planejado
+
+O MVP deve conter exatamente:
+
+1. Setup Django + Django REST Framework.
+2. Usuario customizado com email como login.
+3. Cadastro de usuario.
+4. Login com JWT.
+5. Refresh token.
+6. Endpoint `/users/me/`.
+7. Logout.
+8. Troca de senha.
+9. Testes basicos.
+10. README caprichado.
+
+## Fase 1 - Setup Django + DRF
 
 Objetivo: deixar o repositorio pronto para receber o projeto Django.
 
@@ -26,19 +42,20 @@ Objetivo: deixar o repositorio pronto para receber o projeto Django.
 - [ ] Criar app principal de usuarios/autenticacao.
 - [ ] Configurar variaveis de ambiente no Django.
 - [ ] Configurar banco de dados inicial.
+- [ ] Configurar Django REST Framework.
 
 Criterio de pronto:
 
 - Dependencias instalam sem erro.
 - `.env.example` cobre as variaveis usadas pelo projeto.
 - `manage.py` existe e o projeto Django inicia localmente.
+- Django REST Framework esta instalado e configurado.
 
 ## Fase 2 - Base da API
 
 Objetivo: criar a estrutura minima da API antes da autenticacao completa.
 
 - [ ] Configurar apps instalados.
-- [ ] Configurar Django REST Framework.
 - [ ] Configurar rotas principais.
 - [ ] Configurar versionamento inicial em `/api/v1/`.
 - [ ] Criar endpoint de health check.
@@ -53,7 +70,7 @@ Criterio de pronto:
 
 ## Fase 3 - Modelo de usuario
 
-Objetivo: criar a base de usuarios antes dos endpoints de autenticacao.
+Objetivo: criar usuario customizado com email como login antes dos endpoints de autenticacao.
 
 - [ ] Criar modelo customizado `accounts.User`.
 - [ ] Configurar `AUTH_USER_MODEL`.
@@ -78,7 +95,6 @@ Objetivo: implementar os fluxos principais de autenticacao da API.
 - [ ] Criar login com JWT.
 - [ ] Criar refresh token.
 - [ ] Criar endpoint para dados do usuario autenticado.
-- [ ] Criar atualizacao basica do usuario autenticado.
 - [ ] Criar logout com blacklist de refresh token.
 - [ ] Criar troca de senha para usuario autenticado.
 
@@ -91,7 +107,7 @@ Criterio de pronto:
 
 ## Fase 5 - Seguranca
 
-Objetivo: reforcar os controles de seguranca dos endpoints e configuracoes.
+Objetivo: reforcar os controles de seguranca necessarios para o MVP.
 
 - [ ] Validar senha forte.
 - [ ] Configurar permissoes por usuario autenticado.
@@ -111,35 +127,34 @@ Criterio de pronto:
 
 ## Fase 6 - Qualidade
 
-Objetivo: aumentar confianca com testes e ferramentas de manutencao.
+Objetivo: adicionar testes automatizados basicos para mostrar maturidade tecnica sem aumentar demais o escopo.
 
 - [ ] Criar testes automatizados para cadastro.
 - [ ] Criar testes automatizados para login.
 - [ ] Criar testes automatizados para refresh token.
 - [ ] Criar testes automatizados para logout.
-- [ ] Criar testes automatizados para permissoes.
+- [ ] Criar testes automatizados para `/users/me/` autenticado e nao autenticado.
 - [ ] Criar testes automatizados para troca de senha.
-- [ ] Configurar cobertura de testes.
-- [ ] Configurar lint/formatacao.
+- [ ] Documentar como rodar os testes.
 
 Criterio de pronto:
 
 - Fluxos principais possuem testes.
 - Testes rodam localmente com um comando documentado.
-- Regras de seguranca planejadas possuem ao menos testes basicos.
+- Casos de sucesso e erro mais importantes estao cobertos.
 
-## Fase 7 - Documentacao e portfolio
+## Fase 7 - README e portfolio no GitHub
 
-Objetivo: transformar a API em um projeto facil de entender, executar e demonstrar.
+Objetivo: transformar a API em um projeto facil de entender no GitHub, mesmo sem deploy publico.
 
-- [ ] Adicionar Swagger/OpenAPI.
 - [x] Documentar instalacao local inicial.
 - [x] Documentar variaveis de ambiente iniciais.
 - [x] Documentar exemplos planejados de requisicao e resposta.
 - [x] Documentar modelo de dados planejado.
 - [x] Documentar requisitos de seguranca.
 - [ ] Atualizar README com comandos reais depois que o Django existir.
-- [ ] Adicionar exemplos de uso com `curl` ou cliente HTTP.
+- [ ] Adicionar exemplos de uso com `curl` ou cliente HTTP depois que os endpoints existirem.
+- [ ] Explicar no README que o projeto e um estudo bem feito para estagio.
 - [ ] Preparar descricao final do projeto para portfolio.
 
 Criterio de pronto:
@@ -147,13 +162,27 @@ Criterio de pronto:
 - Uma pessoa consegue entender o objetivo do projeto pelo README.
 - Uma pessoa consegue rodar o projeto seguindo o setup.
 - Endpoints implementados aparecem na documentacao.
+- Testes automatizados sao citados no README.
 
-## Fase 8 - Deploy
+## Depois do MVP - Melhorias futuras
 
-Objetivo: publicar a API em ambiente acessivel para demonstracao.
+Objetivo: evoluir o projeto apenas depois que a primeira versao pequena estiver pronta.
 
+- [ ] Adicionar Swagger/OpenAPI.
+- [ ] Configurar lint/formatacao.
+- [ ] Configurar cobertura de testes.
 - [ ] Configurar Docker.
 - [ ] Criar `docker-compose.yml`.
+- [ ] Implementar recuperacao de senha por email.
+- [ ] Implementar verificacao de email.
+- [ ] Avaliar atualizacao de perfil.
+- [ ] Avaliar login social.
+- [ ] Avaliar frontend.
+
+## Depois do MVP - Deploy publico
+
+Objetivo: publicar a API em ambiente acessivel para demonstracao, se isso fizer sentido depois da versao GitHub estar pronta.
+
 - [ ] Configurar banco de dados para ambiente de deploy.
 - [ ] Configurar variaveis de ambiente no deploy.
 - [ ] Configurar `ALLOWED_HOSTS` e CORS para o dominio publico.
