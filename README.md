@@ -1,8 +1,8 @@
 # Django Secure Auth API
 
-API REST de autenticacao segura em desenvolvimento, criada para praticar desenvolvimento backend com **Python**, **Django**, **Django REST Framework** e **JWT**.
+API REST de autenticacao segura em desenvolvimento, criada como projeto de estudo bem feito para praticar backend e fortalecer portfolio para vaga de estagio.
 
-O foco do projeto e construir uma base pequena, testavel e bem documentada para cadastro, login, refresh token, logout e acesso aos dados do usuario autenticado.
+O foco e entregar primeiro um MVP pequeno, completo e bem documentado com **Python**, **Django**, **Django REST Framework** e **JWT**. Depois disso, o projeto pode evoluir com melhorias incrementais.
 
 ## Status do projeto
 
@@ -15,15 +15,18 @@ Itens ja presentes:
 - `.gitignore` para arquivos sensiveis e artefatos locais.
 - Documentacao inicial em `docs/`.
 
-Consulte o [roadmap](docs/ROADMAP.md) para acompanhar o que ja foi feito e o que ainda sera implementado.
+Consulte o [roadmap](docs/ROADMAP.md) para acompanhar o MVP e as melhorias futuras.
 
 ## Objetivos
 
+- Construir um projeto de estudo bem feito para apresentar no GitHub.
+- Praticar fundamentos importantes para uma vaga de estagio backend.
 - Praticar criacao de APIs REST com Django REST Framework.
 - Implementar autenticacao baseada em email e senha.
 - Usar JWT com access token e refresh token.
 - Aplicar boas praticas de seguranca desde o inicio.
-- Manter documentacao clara o suficiente para estudo, manutencao e portfolio.
+- Implementar testes automatizados basicos para os fluxos principais.
+- Manter documentacao clara o suficiente para estudo, revisao e portfolio.
 
 ## Tecnologias planejadas
 
@@ -60,26 +63,51 @@ Leia o [guia de setup local](docs/SETUP_GUIDE.md) para instrucoes completas.
 | [Requisitos de seguranca](docs/SECURITY_REQUIREMENTS.md) | Referencia/checklist | Para validar decisoes de autenticacao, permissao e configuracao. |
 | [Roadmap do projeto](docs/ROADMAP.md) | Planejamento | Para acompanhar as fases de implementacao. |
 
-## Escopo inicial
+## MVP
 
-Incluido na primeira versao planejada:
+O MVP deve ser pequeno e completo. A primeira versao planejada inclui exatamente:
 
-- Cadastro de usuario.
-- Login com JWT.
-- Refresh de access token.
-- Logout com blacklist de refresh token.
-- Endpoint para usuario autenticado.
-- Troca de senha.
-- Health check.
-- Testes automatizados dos fluxos principais.
+1. Setup Django + Django REST Framework.
+2. Usuario customizado com email como login.
+3. Cadastro de usuario.
+4. Login com JWT.
+5. Refresh token.
+6. Endpoint `/users/me/`.
+7. Logout.
+8. Troca de senha.
+9. Testes basicos dos fluxos principais.
+10. README caprichado com instrucoes e exemplos.
 
-Fora do escopo inicial:
+## Fora do MVP
 
 - Recuperacao de senha por email.
 - Verificacao de email.
 - Login social.
+- Frontend.
 - Perfil publico completo.
 - Painel administrativo customizado.
+- Permissoes complexas.
+- Deploy publico obrigatorio.
+
+Esses itens podem entrar depois que o MVP estiver pronto.
+
+## Testes automatizados
+
+Mesmo sendo um projeto de estudo, os testes fazem parte do MVP. A ideia nao e ter uma suite enorme no inicio, mas cobrir os fluxos que mostram maturidade tecnica:
+
+- Cadastro cria usuario com sucesso.
+- Cadastro rejeita senha fraca ou confirmacao diferente.
+- Login retorna tokens com credenciais validas.
+- Login rejeita credenciais invalidas.
+- `/users/me/` exige autenticacao.
+- Usuario autenticado consegue ver os proprios dados.
+- Troca de senha exige senha atual correta.
+
+## GitHub como vitrine
+
+Neste momento, o projeto foi pensado para ficar bem apresentado no GitHub. Por isso, o README e os documentos em `docs/` devem permitir que outra pessoa entenda o objetivo, o escopo, as decisoes tecnicas e o caminho para rodar localmente.
+
+Deploy publico fica como melhoria futura, depois que o MVP estiver implementado e testado.
 
 ## Seguranca
 
