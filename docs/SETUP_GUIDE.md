@@ -1,17 +1,32 @@
 # Guia de Setup Local
 
-Este documento descreve como preparar o ambiente local para desenvolver a API. Ele sera atualizado conforme o projeto Django for criado e novas dependencias forem adicionadas.
+Este guia mostra como preparar o ambiente local para desenvolver a Secure Auth API.
+
+Publico-alvo: pessoa desenvolvedora que clonou o repositorio e quer deixar as dependencias prontas para iniciar a implementacao.
+
+## Estado atual
+
+O projeto Django ainda nao foi criado neste repositorio. Por isso, alguns comandos deste guia estao marcados como "quando o projeto Django existir".
+
+Hoje voce ja consegue:
+
+- Criar o ambiente virtual.
+- Instalar as dependencias.
+- Criar o arquivo `.env` local a partir do `.env.example`.
+
+Voce ainda nao consegue rodar `manage.py`, migrations, testes Django ou servidor local, porque esses arquivos serao criados em uma fase posterior do roadmap.
 
 ## Requisitos
 
-Antes de iniciar, tenha instalado:
+Instale antes de comecar:
 
-- Python 3.12 ou superior
-- Git
-- pip
-- Um editor de codigo, como VS Code
+- Python 3.12 ou superior.
+- Git.
+- pip.
+- PowerShell, se estiver no Windows.
+- Um editor de codigo, como VS Code.
 
-Versao local usada durante a preparacao do projeto:
+Versao local registrada durante a preparacao inicial:
 
 ```txt
 Python 3.14.3
@@ -19,44 +34,50 @@ Python 3.14.3
 
 ## Clonar o repositorio
 
-```bash
+```powershell
 git clone <url-do-repositorio>
 cd secure-auth-api
 ```
 
-Se voce ja esta com o repositorio aberto localmente, pode seguir para a criacao do ambiente virtual.
+Se o repositorio ja estiver aberto na sua maquina, siga para a criacao do ambiente virtual.
 
-## Criar ambiente virtual
+## Criar e ativar ambiente virtual
 
-No Windows PowerShell:
+Crie o ambiente virtual:
 
 ```powershell
 python -m venv .venv
 ```
 
-Ativar o ambiente virtual:
+Ative o ambiente virtual:
 
 ```powershell
 .\.venv\Scripts\Activate.ps1
 ```
 
-Se o PowerShell bloquear a ativacao, execute:
+Quando o ambiente estiver ativo, o terminal normalmente mostra `(.venv)` antes do caminho.
+
+Se o PowerShell bloquear a ativacao, libere scripts para o usuario atual:
 
 ```powershell
 Set-ExecutionPolicy -ExecutionPolicy RemoteSigned -Scope CurrentUser
 ```
 
-Depois tente ativar o ambiente novamente.
+Depois execute novamente:
+
+```powershell
+.\.venv\Scripts\Activate.ps1
+```
 
 ## Instalar dependencias
 
-Com o ambiente virtual ativado, atualize o pip:
+Atualize o pip:
 
 ```powershell
 python -m pip install --upgrade pip
 ```
 
-Depois instale as dependencias do projeto:
+Instale as dependencias do projeto:
 
 ```powershell
 pip install -r requirements.txt
@@ -64,104 +85,89 @@ pip install -r requirements.txt
 
 Dependencias iniciais:
 
-```txt
-Django
-Django REST Framework
-Django REST Framework Simple JWT
-python-decouple
-dj-database-url
-django-cors-headers
-```
+| Pacote | Uso planejado |
+| --- | --- |
+| Django | Framework web principal. |
+| djangorestframework | Criacao da API REST. |
+| djangorestframework-simplejwt | Autenticacao com JWT. |
+| python-decouple | Leitura de variaveis de ambiente. |
+| dj-database-url | Configuracao do banco via `DATABASE_URL`. |
+| django-cors-headers | Configuracao de CORS por ambiente. |
 
-O projeto usa Django `5.2.x` LTS como base inicial.
+## Configurar variaveis de ambiente
 
-## Criar arquivo de variaveis de ambiente
-
-O projeto deve usar um arquivo `.env` para configuracoes locais sensiveis.
-
-Exemplo planejado:
-
-```env
-SECRET_KEY=change-me
-DEBUG=True
-ALLOWED_HOSTS=localhost,127.0.0.1
-DATABASE_URL=sqlite:///db.sqlite3
-ACCESS_TOKEN_LIFETIME_MINUTES=15
-REFRESH_TOKEN_LIFETIME_DAYS=7
-```
-
-Importante:
-
-- O arquivo `.env` nao deve ser enviado para o Git.
-- O projeto deve ter um `.env.example` com valores ficticios.
-
-Para criar o arquivo local, copie o exemplo:
+Copie o arquivo de exemplo:
 
 ```powershell
 Copy-Item .env.example .env
 ```
 
-## Criar projeto Django
+O `.env` deve conter valores locais e nao deve ser versionado.
 
-Quando formos iniciar a implementacao, o comando planejado sera:
+Variaveis iniciais:
 
-```powershell
-django-admin startproject config .
-```
+| Variavel | Exemplo | Descricao |
+| --- | --- | --- |
+| `SECRET_KEY` | `change-me` | Chave secreta do Django. Use um valor forte fora do ambiente local. |
+| `DEBUG` | `True` | Ativa detalhes de debug apenas em desenvolvimento. |
+| `ALLOWED_HOSTS` | `localhost,127.0.0.1` | Hosts permitidos para atender requisicoes. |
+| `DATABASE_URL` | `sqlite:///db.sqlite3` | URL de conexao do banco. |
+| `ACCESS_TOKEN_LIFETIME_MINUTES` | `15` | Duracao planejada do access token. |
+| `REFRESH_TOKEN_LIFETIME_DAYS` | `7` | Duracao planejada do refresh token. |
 
-Depois, criaremos um app para autenticacao/usuarios:
+## Verificar instalacao
 
-```powershell
-python manage.py startapp accounts
-```
-
-## Rodar migrations
-
-Depois que o projeto Django existir:
-
-```powershell
-python manage.py migrate
-```
-
-## Criar superusuario
-
-```powershell
-python manage.py createsuperuser
-```
-
-## Rodar servidor local
-
-```powershell
-python manage.py runserver
-```
-
-Servidor local esperado:
-
-```txt
-http://127.0.0.1:8000/
-```
-
-## Comandos uteis
-
-Verificar versao do Python:
+Confira a versao do Python:
 
 ```powershell
 python --version
 ```
 
-Verificar pacotes instalados:
+Confira se as dependencias foram instaladas:
 
 ```powershell
 pip freeze
 ```
 
-Salvar dependencias instaladas:
+## Quando o projeto Django existir
+
+Os comandos abaixo fazem parte da proxima etapa de implementacao.
+
+Criar o projeto Django:
 
 ```powershell
-pip freeze > requirements.txt
+django-admin startproject config .
 ```
 
-Use esse comando apenas quando a intencao for congelar as versoes exatas instaladas no ambiente local. Para o inicio do projeto, o `requirements.txt` usa intervalos de versao para receber atualizacoes compativeis.
+Criar o app de usuarios/autenticacao:
+
+```powershell
+python manage.py startapp accounts
+```
+
+Rodar migrations:
+
+```powershell
+python manage.py migrate
+```
+
+Criar superusuario:
+
+```powershell
+python manage.py createsuperuser
+```
+
+Rodar servidor local:
+
+```powershell
+python manage.py runserver
+```
+
+Endereco local esperado:
+
+```txt
+http://127.0.0.1:8000/
+```
 
 Rodar testes:
 
@@ -169,9 +175,46 @@ Rodar testes:
 python manage.py test
 ```
 
+## Manutencao de dependencias
+
+O `requirements.txt` usa intervalos de versao para permitir atualizacoes compativeis no inicio do projeto.
+
+Use o comando abaixo apenas quando quiser congelar exatamente as versoes do ambiente atual:
+
+```powershell
+pip freeze > requirements.txt
+```
+
+Antes de alterar o arquivo, confira se isso e mesmo desejado para a fase atual do projeto.
+
+## Solucao de problemas
+
+### `python` nao e reconhecido
+
+Verifique se o Python esta instalado e adicionado ao `PATH`. No Windows, tambem pode ser necessario fechar e abrir o terminal novamente depois da instalacao.
+
+### Ativacao da `.venv` bloqueada
+
+Execute:
+
+```powershell
+Set-ExecutionPolicy -ExecutionPolicy RemoteSigned -Scope CurrentUser
+```
+
+Depois tente ativar o ambiente novamente.
+
+### `pip install` falha
+
+Atualize o pip e tente novamente:
+
+```powershell
+python -m pip install --upgrade pip
+pip install -r requirements.txt
+```
+
 ## Proximos ajustes neste guia
 
-- Atualizar comandos depois que o projeto Django for criado.
+- Atualizar comandos depois que `manage.py` existir.
 - Adicionar instrucoes de Docker.
 - Adicionar instrucoes para Swagger/OpenAPI.
 - Adicionar instrucoes para banco de dados de producao.
