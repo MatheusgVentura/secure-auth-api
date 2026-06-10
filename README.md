@@ -204,6 +204,23 @@ Neste momento, o projeto foi pensado para ficar bem apresentado no GitHub. Por i
 
 Deploy publico fica como melhoria futura, depois que o MVP estiver implementado e testado.
 
+## Descricao para portfolio
+
+Secure Auth API e uma API REST de autenticacao criada com Django, Django REST Framework e JWT. O projeto implementa um fluxo completo de autenticacao com usuario customizado baseado em email, cadastro, login, refresh token, logout com blacklist, consulta do usuario autenticado e troca de senha.
+
+O objetivo do projeto e demonstrar fundamentos importantes de backend para uma vaga de estagio: modelagem de usuario customizado, autenticacao segura, separacao de configuracoes por ambiente, uso de variaveis de ambiente, testes automatizados e documentacao clara para execucao local.
+
+Principais destaques tecnicos:
+
+- Usuario customizado com email como identificador principal.
+- Autenticacao JWT com access token e refresh token.
+- Logout com blacklist de refresh token.
+- Endpoints privados protegidos por permissao.
+- Validacao de senha com validadores nativos do Django.
+- Respostas de erro padronizadas para validacao.
+- Settings separados para desenvolvimento, teste e producao.
+- Suite de testes com pytest cobrindo os fluxos principais.
+
 ## Seguranca
 
 Este projeto trata seguranca como requisito central, nao como ajuste final. As decisoes planejadas incluem:

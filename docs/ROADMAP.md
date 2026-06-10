@@ -156,7 +156,7 @@ Objetivo: transformar a API em um projeto facil de entender no GitHub, mesmo sem
 - [x] Atualizar README com comandos reais depois que o Django existir.
 - [x] Adicionar exemplos de uso com `curl` ou cliente HTTP depois que os endpoints existirem.
 - [x] Explicar no README que o projeto e um estudo bem feito para estagio.
-- [ ] Preparar descricao final do projeto para portfolio.
+- [x] Preparar descricao final do projeto para portfolio.
 
 Criterio de pronto:
 
