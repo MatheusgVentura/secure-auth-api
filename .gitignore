@@ -27,6 +27,7 @@ htmlcov/
 # IDEs and editors
 .vscode/
 .idea/
+.obsidian/
 
 # OS files
 .DS_Store
